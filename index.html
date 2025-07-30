@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD BASHIR AHMED - Digital Marketer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #111827; /* Dark background */
+            color: #e5e7eb; /* Light text */
+        }
+        #home {
+            background-image: url('assets/bashirbg.jpeg');
+            background-size: cover;
+            background-position: center top; /* Adjusted to show face */
+            background-attachment: fixed;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        }
+        .gradient-border {
+            border: 2px solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        }
+        .card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.1), 0 10px 10px -5px rgba(139, 92, 246, 0.1);
+            border-color: #8b5cf6;
+        }
+        .skill-card {
+             background-color: #1f2937;
+             border: 1px solid #374151;
+             transition: background-color 0.3s, transform 0.3s;
+        }
+        .skill-card:hover {
+            background-color: #374151;
+            transform: scale(1.05);
+        }
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #374151;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container.left {
+            left: 0;
+        }
+        .timeline-container.right {
+            left: 50%;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #1f2937;
+            border: 4px solid #8b5cf6;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: #1f2937;
+            position: relative;
+            border-radius: 6px;
+            border: 1px solid #374151;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .timeline-content:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.1), 0 4px 6px -2px rgba(139, 92, 246, 0.1);
+        }
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-container.right {
+                left: 0%;
+            }
+            .timeline-container.left::after, .timeline-container.right::after {
+                left: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Header -->
+    <header class="bg-gray-900/80 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-3xl font-extrabold gradient-text">MD BASHIR AHMED</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-gray-300 hover:text-white transition">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-white transition">About</a>
+                <a href="#education" class="text-gray-300 hover:text-white transition">Education</a>
+                <a href="#experience" class="text-gray-300 hover:text-white transition">Experience</a>
+                <a href="#skills" class="text-gray-300 hover:text-white transition">Skills</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-300 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <a href="#home" class="block py-3 px-6 text-sm hover:bg-gray-700">Home</a>
+            <a href="#about" class="block py-3 px-6 text-sm hover:bg-gray-700">About</a>
+            <a href="#education" class="block py-3 px-6 text-sm hover:bg-gray-700">Education</a>
+            <a href="#experience" class="block py-3 px-6 text-sm hover:bg-gray-700">Experience</a>
+            <a href="#skills" class="block py-3 px-6 text-sm hover:bg-gray-700">Skills</a>
+            <a href="#contact" class="block py-3 px-6 text-sm hover:bg-gray-700">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="h-screen flex items-center justify-center text-center relative">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div class="relative z-10 container mx-auto px-6">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">MD BASHIR AHMED</h1>
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mt-3">Digital Marketer</h2>
+                <p class="mt-6 max-w-2xl mx-auto text-gray-300 text-lg">
+                    A passionate and result-oriented professional ready to elevate your brand's digital presence.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6">
+                    <a href="#contact" class="gradient-bg text-white font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-lg w-full sm:w-auto">Hire Me</a>
+                    <a href="assets/cv of bashir.pdf" id="download-cv-btn" class="gradient-border text-white font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-lg w-full sm:w-auto">Download CV</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-24 bg-gray-800/50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-16 text-white">About Me</h2>
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/3 flex-shrink-0">
+                         <div class="relative w-72 h-72 mx-auto rounded-full gradient-bg p-1.5 shadow-lg">
+                            <img src="assets/bashirpass.jpeg" alt="Photo of MD BASHIR AHMED" class="w-full h-full rounded-full object-cover">
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3 text-center lg:text-left">
+                        <h3 class="text-3xl font-semibold mb-6 gradient-text">A Passionate Digital Marketer</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            My goal is to secure a position where I can leverage my strong communication skills, organizational abilities, and innovative marketing strategies to foster brand growth. I am passionate about contributing to business expansion by utilizing a comprehensive suite of digital marketing tools, including PPC, SEO, SEM, SMM, and Email Marketing. My academic background in English, combined with hands-on experience, has equipped me with a unique ability to craft compelling content and understand customer psychology.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-16 text-white">My Education</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="card p-8 rounded-xl text-center">
+                        <div class="text-5xl gradient-text mb-4"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="text-2xl font-bold text-white">Masters in English</h3>
+                        <p class="font-semibold text-blue-400 my-2">Uttara University</p>
+                        <p class="text-gray-400">Passed in 2018</p>
+                        <p class="text-gray-500">CGPA: 3.36 / 4.00</p>
+                    </div>
+                    <div class="card p-8 rounded-xl text-center">
+                        <div class="text-5xl gradient-text mb-4"><i class="fas fa-user-graduate"></i></div>
+                        <h3 class="text-2xl font-bold text-white">BA Honors in English</h3>
+                        <p class="font-semibold text-blue-400 my-2">Uttara University</p>
+                        <p class="text-gray-400">Passed in 2015</p>
+                        <p class="text-gray-500">CGPA: 3.54 / 4.00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="py-24 bg-gray-800/50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-16 text-white">Work Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-bold text-white">Customer Service Executive</h3>
+                            <p class="font-semibold text-blue-400 mb-2">Edison Group</p>
+                            <p class="text-sm text-gray-500 mb-3">Dec 2021 - Apr 2023</p>
+                            <p class="text-gray-400 text-sm">Dealing with customers, solving queries, and selling mobile products.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-bold text-white">Digital Marketing Manager</h3>
+                            <p class="font-semibold text-blue-400 mb-2">Anaphora Bangladesh Ltd.</p>
+                            <p class="text-sm text-gray-500 mb-3">June 2020 - Nov 2021</p>
+                            <p class="text-gray-400 text-sm">Boosting online business, managing social media, and creating quality content.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-bold text-white">Customer Service Executive</h3>
+                            <p class="font-semibold text-blue-400 mb-2">Edison Group</p>
+                            <p class="text-sm text-gray-500 mb-3">Apr 2015 - May 2019</p>
+                            <p class="text-gray-400 text-sm">Ensured customer satisfaction and contributed to achieving sales targets.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-bold text-white">International Call Center Agent</h3>
+                            <p class="font-semibold text-blue-400 mb-2">Universe It Itd.</p>
+                            <p class="text-sm text-gray-500 mb-3">Jan 2015 - Apr 2015</p>
+                            <p class="text-gray-400 text-sm">Calling to USA & Canada and selling vocational travel offers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-16 text-white">Professional Skills</h2>
+                
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold text-center mb-8 gradient-text">Digital Marketing</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                        <div class="skill-card p-4 rounded-lg text-center"><p>SEO & SEM</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Social Media Marketing</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Content Marketing</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Email Marketing</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>PPC Advertising</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Affiliate Marketing</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Influencer Marketing</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>CRO</p></div>
+                    </div>
+                </div>
+
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold text-center mb-8 gradient-text">Tools & Platforms</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Google Analytics</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Google Ads</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Facebook Ads</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Mailchimp</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>HubSpot</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Canva</p></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-center mb-8 gradient-text">Computer & Professional</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                        <div class="skill-card p-4 rounded-lg text-center"><p>MS Office Suite</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Google Workspace</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>WordPress</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Basic Photoshop</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Communication</p></div>
+                        <div class="skill-card p-4 rounded-lg text-center"><p>Customer Service</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-gray-800/50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-16 text-white">Get In Touch</h2>
+                <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-12">
+                    <div class="md:w-1/2">
+                        <h3 class="text-3xl font-semibold mb-6 text-white">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-phone gradient-text text-3xl w-8 text-center"></i>
+                                <div>
+                                    <p class="text-gray-400 font-semibold">Phone</p>
+                                    <a href="tel:+8801715208537" class="text-white hover:text-blue-400 transition">+8801715208537</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i class="fa-brands fa-whatsapp gradient-text text-3xl w-8 text-center"></i>
+                                <div>
+                                    <p class="text-gray-400 font-semibold">WhatsApp</p>
+                                    <a href="https://wa.me/8801920075205" target="_blank" class="text-white hover:text-blue-400 transition">+8801920075205</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-envelope-open-text gradient-text text-3xl w-8 text-center"></i>
+                                <div>
+                                    <p class="text-gray-400 font-semibold">Email</p>
+                                    <a href="mailto:bashirahmed1992@gmail.com" class="text-white hover:text-blue-400 transition">bashirahmed1992@gmail.com</a>
+                                </div>
+                            </div>
+                             <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-location-dot gradient-text text-3xl w-8 text-center"></i>
+                                <div>
+                                    <p class="text-gray-400 font-semibold">Address</p>
+                                    <p class="text-white">Madaripur, Dhaka, Bangladesh</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-semibold mt-10 mb-4 text-white">Follow Me</h3>
+                        <div class="flex gap-4">
+                            <a href="https://www.linkedin.com/in/md-bashir-ahmed-8866b3111/" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 hover:gradient-bg hover:scale-110 hover:-translate-y-1 transition-all duration-300"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
+                            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 hover:gradient-bg hover:scale-110 hover:-translate-y-1 transition-all duration-300"><i class="fa-brands fa-github text-xl"></i></a>
+                            <a href="https://x.com/MdBashir544" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 hover:gradient-bg hover:scale-110 hover:-translate-y-1 transition-all duration-300"><i class="fa-brands fa-twitter text-xl"></i></a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 card p-8 rounded-xl">
+                         <h3 class="text-3xl font-semibold mb-6 text-white">Send Me a Message</h3>
+                        <form action="#" method="POST">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-gray-400 mb-2">Your Name</label>
+                                    <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-gray-400 mb-2">Your Email</label>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label for="message" class="block text-gray-400 mb-2">Your Message</label>
+                                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                            </div>
+                            <div class="text-center mt-8">
+                                <button type="submit" class="gradient-bg text-white font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <p>&copy; 2025 MD BASHIR AHMED. All rights reserved.</p>
+            <p class="text-sm mt-2">Developed by <a href="https://www.linkedin.com/in/anikhofficial/" target="_blank" class="underline hover:text-blue-400 transition-colors">Anik Hasan</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Force CV download
+        const downloadBtn = document.getElementById('download-cv-btn');
+        downloadBtn.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            const cvUrl = downloadBtn.href;
+            
+            fetch(cvUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = blobUrl;
+                    a.download = 'cv_of_bashir.pdf'; 
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(blobUrl);
+                    a.remove();
+                })
+                .catch(() => console.error('Could not fetch the CV.'));
+        });
+    </script>
+</body>
+</html>
+
